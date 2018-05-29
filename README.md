@@ -119,6 +119,7 @@ Start it by going to the debug console and typing:
 masternode start-alias MN_NAME
 ```
 
+Replace MN_NAME with your actual masternode name.
 And there you have it, it should all be installed and enabled correctly!
 
 
