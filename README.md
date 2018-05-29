@@ -8,7 +8,7 @@ A novices guide to an Ubuntu 16.04 install
 If you haven't done so already, install the windows wallet from https://github.com/dextrocoin/dextro/releases 
 Create a new receive address and call it something like MN1. Although I like to call mine the name of my server so it's easier to track which VPS each MN is installed on.
 
-Then send 1000 DXO coins to the address you just created. Make sure the address receives EXACTLY 1000 coins, so DO NOT tick the "Subtract fee from amount" option.
+Then send 1000 DXO coins to the address you just created. Make sure the address receives EXACTLY 1000 coins.
 We now need to **wait** for 15 confirmations of the transaction so we'll get on with the remote VPS install.
 
 
