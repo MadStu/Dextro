@@ -14,7 +14,7 @@ sudo apt-get update -y
 sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
 sudo apt-get install libminiupnpc-dev -y
 sudo apt-get -y install python-virtualenv virtualenv
-sudo apt-get install nano jq htop git pwgen -y
+sudo apt-get install nano jq htop git pwgen libzmq3-dev bc -y
 PASS=$(pwgen -1 14 -n)
 
 useradd -m -s /bin/bash dxouser
