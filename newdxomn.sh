@@ -64,7 +64,7 @@ rm mycron
 
 echo "Reindexing blockchain..."
 
-~/dextro/dextro-cli stop
+
 sleep 5
 rm ~/.dextro/mncache.dat
 rm ~/.dextro/mnpayments.dat
