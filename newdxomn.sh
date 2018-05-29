@@ -51,7 +51,7 @@ cp ~/.dextro/dextro.conf ~/backup/dextro.conf
 cp ~/.dextro/wallet.dat ~/backup/wallet.dat
 
 crontab -l > mycron
-echo "@reboot ~/dextro/dextrod -daemon && sleep 5 && ~/dextro/dextro-cli masternode start-all >/dev/null 2>&1" >> mycron
+echo "@reboot ~/dextro/dextrod -daemon >/dev/null 2>&1" >> mycron
 crontab mycron
 rm mycron
 
