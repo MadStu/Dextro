@@ -38,8 +38,6 @@ printf "rpcuser=rpc$RPCU\nrpcpassword=$PASS\nrpcport=39321\nrpcthreads=8\nrpcall
 sleep 20
 MKEY=$(~/dextro/dextro-cli masternode genkey)
 
-
-
 ~/dextro/dextro-cli stop
 printf "masternode=1\nmasternodeprivkey=$MKEY\n\n" >> ~/.dextro/dextro.conf
 sleep 60
@@ -52,18 +50,12 @@ mkdir ~/backup
 cp ~/.dextro/dextro.conf ~/backup/dextro.conf
 cp ~/.dextro/wallet.dat ~/backup/wallet.dat
 
-
-
 crontab -l > mycron
 echo "@reboot ~/dextro/dextrod -daemon && sleep 5 && ~/dextro/dextro-cli masternode start-all >/dev/null 2>&1" >> mycron
 crontab mycron
 rm mycron
 
-
-
-
 echo "Reindexing blockchain..."
-
 
 sleep 5
 rm ~/.dextro/mncache.dat
@@ -75,9 +67,6 @@ sleep 2
 ################################################################################
 
 sleep 10
-
-
-
 
 while true; do
 
@@ -112,16 +101,9 @@ fi
 done
 
 
-
-
-
-
-
-
 echo "Now wait for AssetID: 999..."
 sleep 1
 
-
 while true; do
 
 MNSYNC=$(~/dextro/dextro-cli mnsync status)
@@ -153,57 +135,6 @@ fi
 	echo " "
 	echo " "
 done
-
-
-#################
-
-
-
-
-###########################
-# ~ Fix to make it work ~ #
-###########################
-
-sleep 2
-~/dextro/dextro-cli stop
-sleep 10
-rm ~/.dextro/mn*
-~/dextro/dextrod -daemon -reindex
-sleep 10
-
-
-while true; do
-
-MNSYNC=$(~/dextro/dextro-cli mnsync status)
-echo "$MNSYNC" > mndxosync.json
-ASSETID=$(jq '.RequestedMasternodeAssets' mndxosync.json)
-
-if (( $(echo "$ASSETID < 900" | bc -l) )); then
-	clear
-	echo " "
-	echo " "
-	echo "  Keep waiting..."
-	echo " "
-	echo "  Looking for: 999"
-	echo "      AssetID: $ASSETID"
-	echo " "
-	echo " "
-	echo " "
-	sleep 5
-else
-	echo " "
-	echo " "
-	echo "    Complete!"
-	echo " "
-	echo " "
-	sleep 5
-	break
-fi
-	echo " "
-	echo " "
-	echo " "
-done
-
 
 ###########################
 
@@ -212,8 +143,6 @@ rm mndxosync.json
 echo " "
 echo " "
 echo " "
-
-
 
 sleep 2
 echo "=================================="
@@ -233,4 +162,3 @@ rm getdxoinfo.json
 cp ~/.dextro/masternode.conf ~/backup/masternode.conf
 
 fi
-
