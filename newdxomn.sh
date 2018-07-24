@@ -35,16 +35,13 @@ EXIP=$(hostname -i)
 printf "rpcuser=rpc$RPCU\nrpcpassword=$PASS\nrpcport=39321\nrpcthreads=8\nrpcallowip=127.0.0.1\nbind=$EXIP:39320\nmaxconnections=128\ngen=0\nexternalip=$EXIP\ndaemon=1\n\naddnode=80.211.24.40\naddnode=85.255.10.24\naddnode=77.81.234.190\naddnode=80.211.168.44\naddnode=194.182.80.106\naddnode=194.182.80.69\naddnode=94.177.254.207\naddnode=80.211.27.191\naddnode=185.33.145.138\naddnode=80.211.219.176\naddnode=194.182.81.153\naddnode=80.211.187.187\naddnode=94.177.170.193\naddnode=80.211.134.175\naddnode=seed1.dextro.io\naddnode=seed2.dextro.io\naddnode=seed3.dextro.io\naddnode=seed4.dextro.io\naddnode=seed5.dextro.io\naddnode=seed6.dextro.io\naddnode=seed7.dextro.io\naddnode=seed8.dextro.io\n\n" > ~/.dextro/dextro.conf
 
 ~/dextro/dextrod -daemon
-sleep 20
+sleep 120
 MKEY=$(~/dextro/dextro-cli masternode genkey)
 
 ~/dextro/dextro-cli stop
 printf "masternode=1\nmasternodeprivkey=$MKEY\n\n" >> ~/.dextro/dextro.conf
 sleep 60
-~/dextro/dextrod -daemon
-sleep 10
-~/dextro/dextro-cli stop
-sleep 30
+
 
 mkdir ~/backup
 cp ~/.dextro/dextro.conf ~/backup/dextro.conf
